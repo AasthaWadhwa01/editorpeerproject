@@ -1,0 +1,122 @@
+.card{
+ height: 80%;
+ background-color: #a1d6e2
+;
+}
+
+h5{
+ font-size: 17px;
+ color: white;
+}
+
+.card-header{
+ height: 80%;
+ text-align: center;
+}
+
+select{
+ background: linear-gradient(to right, #e0eafc
+, #cfdef3
+);
+}
+
+.addRepo{
+    margin-left: 50px;
+        height: 120%;
+}
+
+@media (max-width: 320px) {
+
+.addRepo{
+    margin-left: 110px;
+}
+
+}
+
+@media (width: 375px) {
+
+.addRepo{
+    margin-left: 140px;
+}
+}
+
+@media (width: 425px) {
+
+.addRepo{
+    margin-left: 170px;
+}
+
+}
+
+@media (width: 768px) {
+
+.card-header{
+ height: 100%;
+ text-align: center;
+}
+
+h5{
+ font-size: 10px;
+}
+
+.addRepo{
+    margin-top:50px;
+    height: 30%;
+    margin-left: -50px;
+}
+
+.plusSize{
+    margin-bottom: 25px;
+}
+
+}
+
+@media (width: 1024px) {
+
+.card-header{
+ height: 100%;
+ text-align: center;
+}
+
+h5{
+ font-size: 12px;
+}
+
+.addRepo{
+    margin-top:75px;
+    height: 30%;
+    margin-left: -50px;
+}
+
+.plusSize{
+    margin-bottom: 40px;
+}
+
+}
+
+@media (width: 1440px) {
+
+.card-header{
+ height: 100%;
+ text-align: center;
+}
+
+h5{
+ font-size: 12px;
+}
+
+.addRepo{
+    margin-top:75px;
+    height: 30%;
+    margin-left: -50px;
+}
+
+.plusSize{
+    margin-bottom: 40px;
+}
+
+.card{
+    height: 80%;
+}
+
+}

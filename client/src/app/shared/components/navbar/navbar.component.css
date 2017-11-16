@@ -1,0 +1,37 @@
+/*css on navbar*/
+
+#mainNav {
+  background-color: #1976D2;
+}
+
+.font a {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.font a:hover {
+  color: black
+}
+
+.navItem {
+  font-family: 'Open Sans', sans-serif;
+  font-size: medium;
+}
+
+.togglerButton {
+  color: white;
+}
+
+.oeditor {
+  font-size: medium;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+ul li {
+  margin-left: 18px;
+}
+
+.logout{
+  cursor: pointer;
+}

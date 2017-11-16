@@ -1,0 +1,15 @@
+/*css on error page*/
+
+body {
+  height: 100%;
+  background-image: url("https://wallpaperscraft.com/image/milky_way_stars_mountains_night_germany_bavaria_sky_45888_1920x1080.jpg");
+}
+
+.jumbotron {
+	margin-bottom : 36%;
+	text-align: center;
+}
+
+p {
+	font-size: 25px;
+}

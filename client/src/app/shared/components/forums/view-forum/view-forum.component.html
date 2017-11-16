@@ -1,0 +1,127 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <!-- navbar selector -->
+      <app-navbar></app-navbar>
+    </div>
+  </div>
+  <!-- start of container -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="heading h4 mt-4 allQuestion">
+          {{forumConfig.DETAILPOST.ALL_QUESTIONS}}
+        </div>
+        <hr>
+        <div class="questionsumary">
+          <div class="row mb-2">
+            <div class="statuscontainer col-sm-2">
+              <div class="answeraccepted h5  border py-2  text-white mt-2">
+                <strong class="pl-4">{{ solutions.length }}</strong>
+                <br><small class="ans">{{forumConfig.DETAILPOST.ANSWERS}}</small>
+              </div>
+            </div>
+            <div class="col-sm-10">
+              <div class="questionTitle">
+                {{data.questionTitle}}
+              </div>
+              <div [innerHtml]="data.problemDescription" class="problemDescription"> </div>
+              <!-- <div *ngIf="data.tags.length !== 0 "> -->
+              <div class="text-white d-inline-block mt-1 mb-3" *ngFor="let res of data.tags">
+                <div class="tags d-inline border py-1 px-1">{{res.value}}</div>
+              </div>
+              <!-- </div> -->
+              <div class="row">
+                <div class="col-sm-5 postedDate small">
+                 <i class="fa fa-clock-o fa-lg text-black"></i> {{forumConfig.DETAILPOST.ASKED}} {{data.date}}
+                </div>
+                <div class="col-sm-7 user">
+                  <span><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></span> {{forumConfig.DETAILPOST.POSTED_BY}} {{data.userName}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="data.codeSnippet !==''" class="mt-2">
+          <div [innerHtml]="data.codeSnippet" class="codesnippet border py-2 text-white">
+          </div>
+        </div>
+        <hr>
+        <label class="h5"><u>{{forumConfig.DETAILPOST.ANSWER}}</u></label>
+        <div class="row" *ngFor="let result of solutions">
+          <div [innerHtml]="result.answer" class="answer col-sm-12 mt-2 mb-1">
+          </div>
+          <!-- <div class="col-sm-3"></div> -->
+          <div class="col-sm-12" *ngIf="result.codeSnippet !==''">
+            <div [innerHtml]="result.codeSnippet" class="codesnippet">
+            </div>
+          </div>
+          <div class="col-sm-8 mt-3 mb-3 small">
+            <div class="row">
+              <div class="col-sm-4 postedDate">
+               <i class="fa fa-clock-o fa-lg text-black"></i> {{forumConfig.DETAILPOST.ANSWERD}} {{result.date}}
+              </div>
+              <div class="col-sm-8">
+                <button class="btn btn-sm text-black like pl-3" (click)="likes()">
+                  <i class="fa fa-thumbs-up fa-lg text-black"></i> 0 </button>
+                <button class="btn btn-sm text-black dislike pl-3" (click)="dislike()">
+                  <i class="fa fa-thumbs-down fa-lg text-black"></i> 0</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 user mt-2 mb-3">
+            <span><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></span> {{forumConfig.DETAILPOST.POSTED_BY}} {{result.username}}
+          </div>
+          <hr>
+        </div>
+        <div class="mt-1">
+          <label class="h5">{{forumConfig.DETAILPOST.YOUR_ANSWERS}}</label>
+          <ckeditor id="answerText" class="answerText" name="answerText" [(ngModel)]="answerText"></ckeditor>
+          <br>
+          <label class="h5">{{forumConfig.DETAILPOST.YOUR_SNIPPET}}</label>
+          <ckeditor id="addSnippet" class="addSnippet" name="addSnippet" [(ngModel)]="addSnippet"></ckeditor>
+        </div>
+        <hr>
+        <div *ngIf="check==false">
+        <div class="login">
+          <div class="row">
+            <div class="col-sm-6 border py-2">
+              <label class="h5">{{forumConfig.DETAILPOST.SIGNUP_LOGIN}}</label>
+              <br>
+              <a class="btn btn-sm postans text-white mt-2" href="#">
+                 <i class="fa fa-github fa-lg text-white"></i>{{forumConfig.DETAILPOST.LOGIN_WITH_GITHUB}}</a>
+            </div>
+            <div class="col-sm-6 border py-2">
+              <label class="h5">{{forumConfig.DETAILPOST.POST_AS_A_GUEST}}</label>
+              <br>
+              <div class="form-group col-xs mt-2">
+                <span><i class="fa fa-user-circle-o fa-2x prefix"></i></span>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="First name">
+                </mat-form-field>
+              </div>
+              <div class="form-group col-xs mt-2">
+                <span><i class="fa fa-envelope fa-2x prefix"></i></span>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="email">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="postanswer mt-3 mb-3 text-center">
+          <button class="btn postans btn-sm text-white" (click)="postAnswer()">{{forumConfig.DETAILPOST.POST_YOUR_ANSWER_BUTTON}}</button>
+        </div>
+        <!-- end of container -->
+      </div>
+    </div>
+  </div>
+  <!-- end of container -->
+  <div class="row mt-5">
+    <div class="col-sm-12">
+      <!-- footer selector -->
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+<nav class="navbar navbar-expand-lg  fixed-top font" id="mainNav">
+  <a class="navbar-brand" >{{config.navbar.ONLINECODEEDITOR}}</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarResponsive">
+    <ul class="navbar-nav ml-5 ">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/forums/list"><i class="fa fa-forumbee" ></i> {{config.navbar.FORUMS}} </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/profile"><i class="fa fa-fw fa-user-circle-o"></i>
+            {{config.navbar.PROFILE}}</a>
+      </li>
+      <li class="nav-item"> <a class="nav-link" (click)=logout()>
+          <i class="fa fa-fw fa-sign-out"></i> {{config.navbar.LOGOUT}} </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

@@ -1,0 +1,383 @@
+/*font styling on heading*/
+
+body, h1, h3 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+/*css on button*/
+
+.orange-circle-button {
+  box-shadow: 2px 4px 0 2px rgba(0, 0, 0, 0.1);
+  border: .5em solid lightgrey;
+  font-size: 1.3em;
+  line-height: 1.7em;
+  color: #000000;
+  background: linear-gradient(to right, #00c3ff, #ffff1c);
+  margin: auto;
+  border-radius: 30%;
+  height: 11.5em;
+  width: 12em;
+  position: relative;
+  margin-top: 120px;
+  margin-left: 30px;
+}
+
+.github-image{
+  width: 5em;
+  height: 5em;
+}
+
+/*css on hover the button*/
+
+.orange-circle-button:hover {
+  color: #ffffff;
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  text-decoration: none;
+  border-color: lightgrey;
+}
+
+.orange-circle-button:visited {
+  color: #ffffff;
+  background-color: #e84d0e;
+  text-decoration: none;
+}
+
+.btn-circle:hover {
+  color: white;
+  opacity: 1;
+}
+
+/*css on modal*/
+
+.modal-body {
+  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/itCjTBE/grey-light-smooth-moving-waves-background-video-animation-hd-1920x1080_vjkea4zve__F0000.png");
+}
+
+.modal-header {
+  background-image: url("../../assets/image/modal.jpg");
+}
+
+.modaltext {
+  justify-content: center;
+}
+
+.WhiteText
+{
+  color:white;
+  font-size: 100px;
+  text-align: center;
+  margin-top:100px;
+}
+
+.YellowText
+{
+  color:gold;
+  font-size: 40px;
+  margin-bottom: 4.2em;
+  text-align: center;
+}
+
+/* make the slide sections move at different speeds */
+
+.slide-delay-2 {
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;    
+}
+
+/* ed mod */
+
+.carousel-inner > .item {
+  display: none;
+  position: relative;
+  -webkit-transition: 0.6s ease-in-out left;
+  transition: 0.6s ease-in-out left;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  line-height: 1;
+}
+
+.carousel-inner > .active,
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  display: block;
+}
+
+.carousel-inner > .active {
+  left: 0;
+}
+
+.carousel-inner > .next,
+.carousel-inner > .prev {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.carousel-inner > .next {
+  left: 100%;
+}
+
+.carousel-inner > .prev {
+  left: -100%;
+}
+
+.carousel-inner > .next.left,
+.carousel-inner > .prev.right {
+  left: 0;
+}
+
+.carousel-inner > .active.left {
+  left: -100%;
+}
+
+.carousel-inner > .active.right {
+  left: 100%;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-control.left {
+  background: #1e5799; /* Old browsers */
+  background: -moz-linear-gradient(top,  #1e5799 0%, #207cca 23%, #207cca 24%, #2989d8 32%, #7db9e8 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(23%,#207cca), color-stop(24%,#207cca), color-stop(32%,#2989d8), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+.carousel-control.right {
+  left: auto;
+  right: 0;
+  background: #1e5799; /* Old browsers */
+  background: -moz-linear-gradient(top,  #1e5799 0%, #207cca 23%, #207cca 24%, #2989d8 32%, #7db9e8 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(23%,#207cca), color-stop(24%,#207cca), color-stop(32%,#2989d8), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #1e5799 0%,#207cca 23%,#207cca 24%,#2989d8 32%,#7db9e8 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+  outline: none;
+  color: #ffffff;
+  text-decoration: none;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
+}
+
+.carousel-control .icon-prev,
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+}
+
+.carousel-control .icon-prev,
+.carousel-control .glyphicon-chevron-left {
+  left: 50%;
+}
+
+.carousel-control .icon-next,
+.carousel-control .glyphicon-chevron-right {
+  right: 50%;
+}
+
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  font-family: serif;
+}
+
+.carousel-control .icon-prev:before {
+  content: '\2039';
+}
+
+.carousel-control .icon-next:before {
+  content: '\203a';
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  margin-left: -30%;
+  padding-left: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+  text-indent: -999px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #000 \9;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.carousel-indicators .active {
+  margin: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 20px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-caption .btn {
+  text-shadow: none;
+}
+
+/*media queries for carousel*/
+
+@media screen and (max-width: 425px) {
+  .WhiteText {
+  color:white;
+  font-size: 40px;
+  text-align: center;
+  margin-top:50px;
+  }
+
+  .YellowText {
+  color:gold;
+  font-size: 20px;
+  text-align: center;
+  }
+
+  h5 {
+    font-size: 0.7em;
+  }
+
+  .orange-circle-button {
+    font-size: 1em;
+    height: 12em;
+    width: 12em;
+    border-radius: 30%;
+    line-height: 1.5em;
+    margin-left: 70px;
+    margin-top:20px;
+  }
+
+  github-img {
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 426px) {
+  
+  .WhiteText {
+  color:white;
+  font-size: 70px;
+  text-align: center;
+  margin-top:20px;
+  }
+  
+  .YellowText {
+  color:gold;
+  font-size: 30px;
+  text-align: center;
+  }
+  
+  .orange-circle-button {
+    font-size: 0.8em;
+    height: 12em;
+    width: 12em;
+    margin-bottom: 100px;
+    border-radius: 30%;
+    line-height: 1.5em;
+    margin-left: 20px;
+  }
+
+  github-img {
+    width: 3.5em;
+    height: 3.5em;
+  }
+
+  h5 {
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (width: 320px){
+  
+  .WhiteText{
+     font-size: 30px;
+  }
+
+  .YellowText {
+  font-size: 15px;
+  } 
+
+  .orange-circle-button {
+    margin-left: 45px;
+  }
+}
+
+@media screen and (width: 425px){
+ 
+  .orange-circle-button {
+    margin-left: 80px;
+  }
+}
+
+@media screen and (width: 1024px){
+  
+  .WhiteText {
+  color:white;
+  font-size: 70px;
+  text-align: center;
+  margin-top:50px;
+  }
+
+  .YellowText {
+  color:gold;
+  font-size: 30px;
+  margin-bottom: 4em;
+  text-align: center;
+  } 
+}

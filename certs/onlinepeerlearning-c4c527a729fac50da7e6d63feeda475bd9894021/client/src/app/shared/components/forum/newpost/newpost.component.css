@@ -1,0 +1,58 @@
+.answeraccepted {
+  width: 86px;
+  background-color: #00695C;
+}
+
+.like {
+  background-color: #00695C;
+}
+
+.problemDescription {
+  font-size: 15px;
+}
+
+.tags {
+  background-color: #CE93D8;
+}
+
+.postquestion {
+  background-color: #00695C;
+}
+
+.questionTitle {
+  color: #6A1B9A;
+}
+
+.user {
+  color: #00695C;
+}
+
+.views {
+  color: #6A1B9A;
+}
+
+.post {
+  background-color: #039BE5;
+}
+
+.cancel {
+  background-color: #FF5722;
+}
+
+.ans {
+  padding-left: 11px;
+}
+
+.navbar {
+  background-color: #00695C;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

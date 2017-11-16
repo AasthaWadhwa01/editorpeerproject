@@ -1,0 +1,121 @@
+<div class="heading">
+  <hr>
+  <h1 class="text-center display-4">{{config.USER_PROFILE_PAGE}}</h1>
+  <hr>
+</div>
+<div class="container">
+  <div class="row">
+    <!-- Profile Card -->
+    <div class="col-sm-3">
+      <div class="card card-inverse card-info">
+        <img class="card-img-top" [src]="imgPath">
+        <div class="card-block">
+          <h4 class="card-title mt-3"></h4>
+          <div class="meta card-text">
+            <a></a>
+          </div>
+          <div class="card-text">
+          </div>
+        </div>
+        <!-- Upload profile Image Button -->
+        <div class="card-footer">
+          <input type="file" id="file" class=" form-control" (change)="fileChange($event)" accept=".jpg,.jpeg,.png">
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-secondary upload" (click)="uploadFile()">{{config.UPLOAD}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <!-- Nav pills tab -->
+      <mat-tab-group>
+        <!-- GitHub information -->
+        <mat-tab label="GitHub Info">
+          <form class="form-horizontal" role="form" [formGroup]="userInfo">
+            <div class="form-group">
+              <label class="col-lg-3 control-label">{{config.GITHUB_ID}}</label>
+              <div class="col-lg-8">
+                <input class="form-control" type="text" formControlName="userid">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 control-label">{{config.LOGIN_NAME}}</label>
+              <div class="col-lg-8">
+                <input class="form-control" formControlName="name" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">{{config.PUBLIC_REPO}}</label>
+              <div class="col-md-8">
+                <input class="form-control" formControlName="public_repos" type="text" readonly>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+        <!-- Personal Information -->
+        <mat-tab label="Personal Info">
+          <div class="card-block">
+            <form class="form" role="form" autocomplete="off">
+              <div class="form-group ">
+                <label class="col-lg-3 col-form-label form-control-label">{{config.FIRST_NAME}}</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="text" value="">
+                </div>
+              </div>
+              <div class="form-group ">
+                <label class="col-lg-3 col-form-label form-control-label">{{config.LAST_NAME}}</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="text" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 col-form-label form-control-label">{{config.EMAIL}}</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="email" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 col-form-label form-control-label">{{config.COMPANY}}</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="text" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 col-form-label form-control-label">{{config.WEBSITE}}</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="url" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class=" col-lg-3 col-form-label form-control-label" for="exampleTextarea">{{config.BIO}}</label>
+                <div class="col-lg-9">
+                  <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="form-group ">
+                <label class="col-lg-3 col-form-label form-control-label">{{config.GENDER}}</label>
+                <div class="col-lg-9 gender">
+                  <div class="row">
+                    <mat-radio-group>
+                      <mat-radio-button value="1">{{config.MALE}}</mat-radio-button>
+                      <mat-radio-button value="2">{{config.FEMALE}}</mat-radio-button>
+                      <mat-radio-button value="3">{{config.OTHER}}</mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 col-form-label form-control-label"></label>
+                <div class="col-lg-9">
+                  <button type="button" class="btn btn-secondary save">{{config.SAVE}}</button>
+                  <button type="button" class="btn btn-secondary cancel">{{config.CANCEL}}</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!-- /form user info -->
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

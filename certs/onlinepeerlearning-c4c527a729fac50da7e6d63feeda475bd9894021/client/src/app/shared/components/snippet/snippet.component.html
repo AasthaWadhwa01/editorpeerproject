@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="col-md-12">
+    <div class="form-area">
+      <form role="form">
+        <br style="clear:both">
+        <!-- form title -->
+        <h3>{{con.con.title}} </h3>
+        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">{{languag}}<span class="caret"></span>
+        </button>
+
+        <!-- dropdown for language selection -->
+        <select    (change)="mode($event)">
+            <option *ngFor= "let lng of languages">{{lng}}</option>
+            </select>
+        <div class="form-group">
+
+          <!-- two way binding of 'title' -->
+          <input type="text" class="form-control" id="title" name="title" placeholder="Title" required [(ngModel)]="title">
+        </div>
+
+        <!-- text area of ck editor -->
+        <ckeditor id="editor1" class="editor1" name="editor1" [(ngModel)]="editor1"></ckeditor>
+
+        <!-- submit button for code snippet -->
+        <button type="button " id="submit " name="submit " class="btn btn-primary pull-right " (click)="submit() " [routerLink]="'/main'">{{con.con.button}}t</button>
+      </form>
+    </div>
+  </div>
+</div>

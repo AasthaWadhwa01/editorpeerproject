@@ -1,0 +1,212 @@
+.answeraccepted {
+  width: 79px;
+  background-color: #3F51B5;
+}
+
+.problemDescription {
+  font-size: 15px;
+  color: #757575;
+}
+
+.tags {
+  background-color: #757575;
+  font-size: 12px;
+}
+
+#viewQue {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.postedDate {
+  color: #757575;
+}
+
+.postquestion {
+  background-color: #3F51B5;
+  cursor: pointer;
+}
+
+.questionTitle {
+  color: #212121;
+  cursor: pointer;
+}
+
+.like {
+  background-color: #BDBDBD;
+  font-size: 12px;
+}
+
+.dislike {
+  background-color: #BDBDBD;
+  font-size: 12px;
+}
+
+.user {
+  color: #616161;
+  font-size: 13px;
+}
+
+.views {
+  color: #6A1B9A;
+}
+
+.ans {
+  padding-left: 11px;
+}
+
+.navbar {
+  background-color: #C5CAE9;
+}
+
+.main {
+  margin-top: 4%;
+  margin-bottom: 5%;
+}
+
+hr {
+  border: 0;
+  display: block;
+  width: 99%;
+  background-color: #DBDCDD;
+  height: 1px;
+}
+
+
+
+/*// Extra small devices (portrait phones, less than 576px)*/
+
+@media (max-width: 575px) {
+  .text-right {
+    text-align: left;
+  }
+  .problemDescription {
+    font-size: 12px;
+  }
+  .questionTitle {
+    font-size: 13px;
+  }
+  .search {
+    margin-top: 8px;
+    margin-bottom: 7px;
+  }
+  .user {
+    font-size: 12px;
+  }
+  .h5 {
+    font-size: 15px;
+  }
+  .h4 {
+    font-size: 16px;
+  }
+  .pagination {
+    padding-left: 0px;
+    font-size: 10px;
+  }
+  .main {
+    margin-top: 20%;
+    margin-bottom: 18%;
+  }
+}
+
+/*// Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767px) {}
+
+
+
+/*// Medium devices (tablets, 768px and up)*/
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .postquestion {
+    float: right;
+  }
+  .user {
+    text-align: right;
+    font-size: 13px;
+  }
+  .problemDescription {
+    font-size: 13px;
+  }
+  .questionTitle {
+    font-size: 14px;
+  }
+  .h5 {
+    font-size: 16px;
+  }
+  .h4 {
+    font-size: 17px;
+  }
+  .main {
+    margin-top: 8%;
+    margin-bottom: 7%;
+  }
+}
+
+
+
+
+/*// Large devices (desktops, 992px and up)*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  .postquestion {
+    float: right;
+  }
+  .user {
+    text-align: right;
+  }
+  .problemDescription {
+    font-size: 14px;
+  }
+  .questionTitle {
+    font-size: 15px;
+  }
+  .main {
+    margin-top: 7%;
+  }
+}
+
+
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+
+@media (min-width: 1200px) {
+  .postquestion {
+    float: right;
+  }
+  .user {
+    text-align: right;
+  }
+  .problemDescription {
+    font-size: 14px;
+  }
+  .questionTitle {
+    font-size: 15px;
+  }
+}
+
+.jumbotron-billboard .img {
+  margin-bottom: 0px;
+  opacity: 0.2;
+  color: #fff;
+  background: #000 url("../../../../assets/image/error.png") center center;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.jumbotron {
+  position: relative;
+  padding: 50px;
+}
+
+.jumbotron .container {
+  z-index: 2;
+  position: relative;
+  z-index: 2;
+}

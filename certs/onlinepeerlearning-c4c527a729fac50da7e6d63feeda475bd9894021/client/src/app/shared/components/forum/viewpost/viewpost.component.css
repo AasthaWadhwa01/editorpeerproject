@@ -1,0 +1,201 @@
+
+.answeraccepted {
+  width: 86px;
+  background-color: #00695C;
+}
+
+.problemDescription{
+	font-size: 15px;
+}
+
+.tags{
+	background-color: #CE93D8;
+}
+
+.postquestion{
+  background-color: #00695C;
+}
+
+.questionTitle{
+	color: #6A1B9A;
+}
+
+.user{
+	color: #00695C;
+}
+
+.views{
+	color:  #6A1B9A;
+}
+
+.ans{
+	  padding-left: 11px;
+}
+
+.navbar{
+	background-color: #00695C;
+}
+
+hr {
+  border: 0;
+  /*clear: both;*/
+  display: block;
+  width: 99%;
+  background-color: #DBDCDD;
+  height: 1px;
+}
+body {
+  font-family: 'Alegreya Sans', sans-serif;
+  padding: 0px 0;
+}
+
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;    
+}
+
+.btn, .form-control {
+    border-radius: 2px;
+    box-shadow: none !important;
+}
+
+.modal-body {
+  background-image: url("http://www.razdjelnici-topline.hr/website/wp-content/uploads/2014/02/background-pattern-3-white.jpg");
+}
+
+.modal-header {
+  background-image: url("https://www.transparenttextures.com/patterns/dark-denim-3.png");
+}
+
+.modaltext {
+  justify-content: center;
+}
+
+/*FOOTER 1*/
+.footer1 a {
+   color: #DDD;
+}
+
+.footer1 a:hover,
+.footer1 a:focus,
+.footer1 a:active {
+   color: #FFF;
+}
+
+.footer1 .footer {
+   background-color: #00695C
+;
+   padding: 35px 0;
+   /*margin-top: 5em;*/
+}
+
+.footer1 .footer .footer-desc p {
+   color: #DDD;
+    margin: 15px 0 8px;
+}
+
+.footer1 .footer .social {
+   margin: 0 auto;
+   display: table;
+}
+
+.footer1 .footer .social li {
+   float: left;
+}
+
+.footer1 .footer .social li a {
+    display: block;
+   font-size: 1em;
+   color: #DDD;
+   width: 30px;
+   height: 30px;
+   line-height: 32px;
+   text-align: center;
+   background-color: #222728
+;
+   border-radius: 2px;
+   margin: 15px 4px
+}
+
+.footer1 .footer .social li a:hover {
+   background-color: #3A4144
+;
+}
+
+.footer1 .footer .input-group {
+   margin: 15px 0;
+}
+
+.footer1 .footer .form-control {
+   border-radius: 2px 0 0 2px;
+   background-color: #585C5D
+;
+   border-color: #585C5D
+;
+   color: #DDD;
+   font-size: 15px;
+}
+
+.footer1 .footer .form-control:hover,
+.footer1 .footer .form-control:focus {
+   border: 1px solid #222728
+;
+   background-color: #222728
+;
+}
+
+.footer1 .footer .input-group-addon {
+   border-radius: 0 2px 2px 0;
+   background-color: #F7931D
+;
+   color: #FFF;
+   border-color: #F7931D
+;
+   font-size: 15px;
+}
+
+.footer1 .footer-bottom {
+   background-color: #222728
+;
+   padding: 20px 0;
+   color: #DDD;
+   font-size: 13px;
+}
+
+.footer1 .footer-bottom ul li {
+   display: inline-block;
+}
+
+.footer1 .footer-bottom ul li a {
+   display: block;
+   padding-left: 8px;
+}
+
+.footer1 .footer-bottom ul li a:after {
+   content: "-";
+   padding-left: 8px;
+}
+
+.footer1 .footer-bottom ul li:last-child a:after {
+   content: "";
+}
+
+.copyright{
+   text-align: center;
+}
+
+@media (max-width: 550px) {
+	.footer1 .footer-bottom .pull-left,
+	.footer1 .footer-bottom .pull-right {
+		float: none !important;
+		width: 100%;
+		padding: 10px;
+		text-align: center;
+	}
+}
+
+

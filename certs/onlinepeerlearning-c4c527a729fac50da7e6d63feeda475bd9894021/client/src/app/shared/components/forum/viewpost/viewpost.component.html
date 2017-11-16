@@ -1,0 +1,166 @@
+<!-- navbar starts -->
+<nav class="navbar navbar-expand-lg navbar-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand text-white" href="">{{forumConfig.VIEWPOST.KNOWLEDGE_BASE}}</a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="" routerLink="/questions">{{forumConfig.VIEWPOST.HOME}}<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="" routerLink="/questions">{{forumConfig.VIEWPOST.QUESTIONS}}</a>
+      </li>
+      <li class="nav-item">
+        <li class="nav-item">
+          <a class="nav-link disabled text-white" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <li class="nav-item">
+            <a class="nav-link disabled text-white" href="#"></a>
+          </li>
+    </ul>
+    <span class="navbar-text white-text">
+              <a class="text-white" (click)="clickHelpModal(template)">
+                 <i class="fa fa-question-circle fa-lg text-white"></i>{{forumConfig.VIEWPOST.HELP}}</a>
+        </span>
+    <span class="navbar-text white-text ml-4 mr-2">
+            <a class="text-white" href="#">
+                 <i class="fa fa-sign-in fa-lg text-white"></i>{{forumConfig.VIEWPOST.LOGIN}}</a>
+        </span>
+  </div>
+</nav>
+<!-- navbar ends -->
+<div class="container-fluid bg-light">
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
+      <!-- serach bar -->
+      <nav class="col-lg-12 col-lg-offset-12 col-md-6 col-md-offset-3 col-sm-8 navbar      col-sm-offset-2 col-xs-10 col-xs-offset-1 mt-4">
+        <div class="input-group input-group-md">
+          <input id="search" #value value="" type="search($event)" class="form-control mr-sm-2 bg-white" placeholder="search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0 detail" (click)="getDetails(value)" type="submit">{{forumConfig.VIEWPOST.SEARCH}}</button>
+        </div>
+      </nav>
+      <!-- serach bar ends -->
+      <div class="row">
+        <div class="col-sm-6 heading h5 mt-4">
+          {{forumConfig.VIEWPOST.ALL_QUESTIONS}}
+        </div>
+        <div class="col-sm-6 justify-content-right mt-4 ">
+          <a class="btn postquestion text-white float-right" href="" routerLink="/addquestion">
+                 <i class="fa fa-question-circle fa-lg text-white"></i>{{forumConfig.VIEWPOST.ASK_QUESTION}}</a>
+        </div>
+      </div>
+      <hr>
+      <!-- showing questions -->
+      <div class="questionsumary">
+        <div class="row" *ngFor="let result of data.data| paginate: { itemsPerPage:4, currentPage: p }">
+          <div class="statuscontainer col-sm-3">
+            <div class="vote h5">
+              {{result.votes}} {{forumConfig.VIEWPOST.VOTES}}
+            </div>
+            <div class="answeraccepted h5  border py-2 text-white mt-4">
+              <strong class="pl-4">{{result.answers.length}}</strong>
+              <br><small class="ans">{{forumConfig.VIEWPOST.ANSWERS}}</small>
+            </div>
+            <div class="views h6  mt-4">
+              1.5 million views
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="questionTitle">
+              <a class="question" (click)="getPostDetail(result._id)">{{result.questionTitle }}</a>
+            </div>
+            <div class="problemDescription">
+              {{result.problemDescription | truncate : 200}}
+            </div>
+            <div class="text-white mt-3 mb-3">
+              <div class="tags d-inline border py-1">Angularjs</div>
+              <div class="tags d-inline boredr py-1">Nodejs</div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5 postedDate small">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <button class="btn text-black btn-outline-success" (click)="like()">
+                          <i class="fa fa-thumbs-up fa-lg text-black"></i> {{likes}}</button>
+                      </div>
+                      <div class="row">
+                        <button class="btn text-black btn-outline-danger" (click)="dislike()">
+                          <i class="fa fa-thumbs-down fa-lg text-black"></i> {{dislikes}}</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    {{forumConfig.VIEWPOST.ASKED}} {{result.date}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-7 user text-right">
+                <span><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></span> posted by prashant
+              </div>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+    <div class="col-sm-2">
+    </div>
+  </div>
+</div>
+<!--FOOTER 1-->
+<footer class="footer1">
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="footer-desc text-center">
+            <img src="http://superdevresources.com/images/super-dev-resources-logo.png" width="82" height="48" alt="">
+            <p>
+              <a href="/" rel="home" title="Super Dev Resources">{{forumConfig.VIEWPOST.FOOTER_CONTENT_TOP}}</a>{{forumConfig.VIEWPOST.FOOTER_CONTENT_ONE}}
+              <br>{{forumConfig.VIEWPOST.FOOTER_CONTENT_TWO}}<a href="/about/">{{forumConfig.VIEWPOST.FOOTER_CONTENT_BOTTOM}}</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <ul class="social">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <!--/.row-->
+    </div>
+    <!--/.container-->
+  </div>
+  <!--/.footer-->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="copyright">{{forumConfig.VIEWPOST.COPYRIGHT}}<a href="">{{forumConfig.VIEWPOST.PEER_LEARNING}}</a>{{forumConfig.VIEWPOST.ALL_RIGHTS}}</div>
+    </div>
+  </div>
+  <!--/.footer-bottom-->
+</footer>
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title"><b>Help</b></h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="modaltext">
+      {{forumConfig.VIEWPOST.MODAL_TEXT}}
+    </p>
+  </div>
+</template>

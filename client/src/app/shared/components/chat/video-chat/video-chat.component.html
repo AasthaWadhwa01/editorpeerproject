@@ -1,0 +1,30 @@
+<div class="videobox videobox--tray videobox--empty">
+  <div class="videobox__title">
+    <!--head section-->
+    <h5 id="myhead"><a (click)="videoBoxToggle()" data-toggle="popover" title="{{config.videoChat.EXPAND}}">{{callUserName}} {{config.videoChat.CALLING}} {{selectedUserName}}</a></h5>
+    <button class="videobox__title__close" (click)="hideVideoChatBox()" data-toggle="popover" title="{{config.videoChat.CLOSE}}">
+      <span>
+               <svg viewBox="0 0 12 12" width="12px" height="12px">
+                   <line stroke="#FFFFFF " x1="11.75" y1="0.25" x2="0.25" y2="11.75"></line>
+                   <line stroke="#FFFFFF " x1="11.75" y1="11.75" x2="0.25" y2="0.25"></line>
+               </svg>
+           </span>
+    </button>
+  </div>
+  <div class="ridge">
+    <!--video call tag -->
+    <video class="videoWidth" #myvideo controls muted></video>
+  </div>
+  <div class="btn-group align-self-center mt-2 mt-2">
+    <!--connect video call button -->
+    <button class="btn btn-outline-success btn-lg" (click)="videoConnect()" data-toggle="popover" title=" 
+{{config.videoChat.RECEIVE}}" vi-controls-play>
+      <i class="fa fa-phone" aria-hidden="true">
+    </i>
+    </button>
+    <!-- disconnect video call button -->
+    <button class="btn btn-outline-danger btn-lg ml-2 ml-2" data-toggle="popover" (click)="videoDisconnect()" title="{{config.videoChat.END}}">
+      <i class="fa fa-phone-square" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

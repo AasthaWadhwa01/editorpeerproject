@@ -1,0 +1,82 @@
+<!-- body for home page starts -->
+<body background="../../assets/image/carousel.jpg" class="img-responsive">
+  <!-- buttons row starts -->
+  <div class="container">
+    <div class="row">
+      <!-- public forum button -->
+      <div class="col-md-4 col-sm-12">
+        <button class="btn btn-default orange-circle-button buttonTest1" data-toggle="popover" title="Enter Public Forum" routerLink="/forums">{{homeConfig.BUTTON1}}
+        </button>
+      </div>
+      <!-- login via github button -->
+      <div class="col-md-4 col-sm-12">
+        <a [href]="apiURLConfig.connect.CALLBACK_URL">
+          <button class="btn btn-default orange-circle-button buttonTest2" data-toggle="popover" title="Login via Github">{{homeConfig.BUTTON2}}
+            <br>
+            <img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-256.png" class="github-image">
+          </button>
+        </a>
+      </div>
+      <!-- instructions button -->
+      <div class="col-md-4 col-sm-12">
+        <button class="btn btn-default orange-circle-button buttonTest3" (click)="openModalWithClass(template)" data-toggle="popover" title="Important Instructions">{{homeConfig.BUTTON3}}
+          <br />
+          <h5>{{homeConfig.BUTTONSUBTITLE}}</h5></button>
+      </div>
+    </div>
+  </div>
+  <!-- buttons row ends -->
+  <!-- carousel starts -->
+  <div class="container-fluid well animated fadeIn">
+    <div class="row-fluid">
+      <div id="my-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active">
+            <div class="container-fluid">
+              <div class="row spacer-md">
+                <div class="col-sm-12 col-md-12">
+                  <div class="animated fadeInRightBig text-center ">
+                    <h1 class="WhiteText content-right">{{homeConfig.TITLE}}</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="row spacer-md">
+                <div class="col-sm-12 col-md-12 col-md-offset-1">
+                  <h3 class="animated fadeInLeftBig slide-delay-2 YellowText">{{homeConfig.TAGLINE}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- carousel ends -->
+  <!-- modal template starts -->
+  <template #template>
+    <div class="modal-header">
+      <h4 class="modal-title"><b>{{homeConfig.MODALTITLE}}</b></h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <strong><u>{{homeConfig.MODALBODY}}</u></strong>
+      <br>
+      <p class="modaltext">
+        1. Login into code editor via Github or If New User?Create Github account to Login into Code Editor.
+        <br> 2. Create Repository in github,Repository Name should be in lower-case,you must also give a short description of the repository.
+        <br> 3. For file names,proper naming convention should be followed.
+        <br> 4. You can choose to make the repository either public or private. Public repositories are visible to the public, while private repositories are only accessible to you, and people you share them with. Your account must be on a paid plan to create a private repository.
+        <br> 5. Create a README, which is a document describing your project.
+        <br> 6. You can also create a CODEOWNERS file, which describes which individuals or teams own certain files in the repository.
+        <br> 7. You can create a .gitignore file, which is a set of ignore rules.
+        <br> 8. You can choose to add a software license for your project.
+        <br> 9. When you're finished, click Create repository.
+        <br> 10. At the bottom of the resulting Quick Setup page, under "Import code from an old repository", you can choose to import a project to your new repository. To do so, click Import code.
+      </p>
+    </div>
+  </template>
+  <!-- modal template ends -->
+</body>
+<!-- body for home page ends -->

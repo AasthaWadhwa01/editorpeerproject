@@ -1,0 +1,76 @@
+ <form #postSubmit='ngForm'>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand text-white" href="">{{forumConfig.ANSWERS.KNOWLEDGE_BASE}}</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="" routerLink="/questions">{{forumConfig.ANSWERS.HOME}}<span class="sr-only">(current)</span></a>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="" routerLink="/questions">{{forumConfig.ANSWERS.QUESTIONS}}</a>
+          </li>
+          <li class="nav-item">
+            <li class="nav-item">
+              <a class="nav-link disabled text-white" href="#"></a>
+            </li>
+        </ul>
+        <span class="navbar-text white-text">
+              <a class="text-white" href="#">
+                 <i class="fa fa-question-circle fa-lg text-white"></i>{{forumConfig.ANSWERS.HELP}}</a>
+        </span>
+        <span class="navbar-text white-text ml-4 mr-2">
+            <a class="text-white" href="#">
+                 <i class="fa fa-sign-in fa-lg text-white"></i>{{forumConfig.ANSWERS.LOGIN}}</a>
+        </span>
+      </div>
+    </nav>
+    <div class="container-fluid bg-light">
+      <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+          <div class="heading h4 mt-4">
+            {{forumConfig.ANSWERS.ALL_QUESTIONS}}
+          </div>
+          <hr>
+          <div class="questionsumary">
+            <div class="question">
+              {{question}}
+            </div>
+            <div class="answers">
+              <div class="row mb-3" *ngFor="let result of data">
+                <div class="answer">
+                  {{result.answer}}
+                </div>
+                <div class="codeSnippet">
+                  {{result.codeSnippet}}
+                </div>
+                <div class="form-group col-sm border mt-2 py-3">
+                  <label for="inputState" class="">{{forumConfig.ANSWERS.ADD_COMMENTS}}</label>
+                  <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="write description" name="problemDescription" [(ngModel)]="problemDescription"></textarea>
+                </div> -->
+                <div class="col-sm-6">
+                
+                </div>
+                <div class="col-sm-6">
+                <div class="date">
+                {{forumConfig.ANSWERS.ASKED_ON}} {{result.date}}
+                </div>
+                <div class="username text-right">
+                   <span><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i></span>posted by {{result.username}}
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>

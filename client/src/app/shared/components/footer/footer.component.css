@@ -1,0 +1,28 @@
+/*css on footer*/
+ .footer-bottom {
+  background-color: #1976D2;
+   padding: 20px 0;
+   color: #DDD;
+   font-size: 13px;
+   clear: both;
+   width: 100%;
+}
+
+/* aligning copyright to center */
+.copyright{
+   text-align: center;
+   font-family:  'Open Sans', sans-serif;
+}
+
+/*media queries*/
+@media (max-width: 550px) {
+  .footer1 .footer-bottom .pull-left,
+  .footer1 .footer-bottom .pull-right {
+    float: none !important;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+

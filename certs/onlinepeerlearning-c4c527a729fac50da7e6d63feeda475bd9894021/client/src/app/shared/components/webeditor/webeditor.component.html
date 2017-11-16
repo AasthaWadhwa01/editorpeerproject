@@ -1,0 +1,92 @@
+<!-- <div class="container"> -->
+  <div class="row ">
+    <div class="col-md-7 padding">
+      <!-- pills to select language -->
+      <ul class="nav nav-pills marg " id="pills-tab" role="tablist">
+        <li class="nav-item ">
+          <a class="nav-link active  " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true" title={{config.webEditor.HTML}}><i class="fa fa-html5" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false" title={{config.webEditor.CSS}}><i class=" fa fa-css3" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false" title={{config.webEditor.JS}}><i class="fa fa-code" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div id="wrap">
+            <section id="code_editors">
+              <nav class="navbar navbar-light bg-dark">
+                <form class="form-inline">
+                  <!-- Buttons to download and add HTML code -->
+                  <div class="dropdown">
+                    <button class="btn btn-outline-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  title={{config.webEditor.ADD}}><i class="fa fa-code" aria-hidden="true"></i></button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" *ngFor="let data of html" (click)="show(data.code)">{{data.title}}</a>
+                    </div>
+                  </div>
+                  &nbsp;
+                  <button href="javascript:void(0);" class="btn btn-outline-primary align-middle btn-outlin-secondary" type="button" (click)="downloadHtmlFile()" data-toggle="tooltip" data-placement="Top" title="Download"><i class="fa fa-download" aria-hidden="true"></i></button>
+                  &nbsp;
+                  <button type="button" class="btn btn-outline-success" href="javascript:void(0);" (click)="downloadZip()" data-toggle="tooltip" data-placement="top" title="Zip Project"><i class="fa fa-file-archive-o" aria-hidden="true"></i></button>
+                  <div id="myDiv"></div>
+                </form>
+              </nav>
+              <div id="myHtmlDiv"></div>
+              <div ace-editor [(text)]="htmlValue" [mode]="'html'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" (textChanged)="onChange($event)" class="code_box" id="html">
+              </div>
+            </section>
+          </div>
+        </div>
+        <!-- Buttons to download and add CSS code -->
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div id="wrap">
+            <section id="code_editors">
+              <nav class="navbar navbar-light bg-dark">
+                <form class="form-inline">
+                  <button class="btn btn-outline-primary" type="button" id="dropdownMenuButon1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title={{config.webEditor.ADD}}><i class="fa fa-code" aria-hidden="true"></i>  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" *ngFor="let data of css" (click)="show(data.code)">{{data.title}}</a>
+                  </div>
+                  &nbsp;
+                  <button href="javascript:void(0);" class="btn btn-outline-primary align-middle btn-outlin-secondary" type="button" href="javascript:void(0);" (click)="downloadCssFile()" data-toggle="tooltip" data-placement="top" title="Download"><i class="fa fa-download" aria-hidden="true"></i></button>
+                  &nbsp;
+                  <button type="button" class="btn btn-outline-success" href="javascript:void(0);" (click)="downloadZip()" data-toggle="tooltip" data-placement="top" title="Zip Project"><i class="fa fa-file-archive-o" aria-hidden="true"></i></button>
+                  <div id="myCssDiv"></div>
+                </form>
+              </nav>
+              <div ace-editor [(text)]="cssValue" [mode]="'css'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" (textChanged)="onChange($event)" class="code_box" id="css">
+              </div>
+            </section>
+          </div>
+        </div>
+        <!-- Buttons to download and add JS code -->
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+          <div id="wrap">
+            <section id="code_editors">
+              <nav class="navbar navbar-light bg-dark">
+                <form class="form-inline">
+                  <button href="javascript:void(0);" class="btn btn-outline-primary align-middle btn-outlin-secondary" type="button" href="javascript:void(0);" (click)="downloadJsFile()" data-toggle="tooltip" data-placement="top" title="Download"><i class="fa fa-download" aria-hidden="true"></i></button>
+                  &nbsp;
+                  <button type="button" class="btn btn-outline-success " href="javascript:void(0);" (click)="downloadZip()" data-toggle="tooltip" data-placement="top" title="Zip Project"><i class="fa fa-file-archive-o" aria-hidden="true"></i></button>
+                  <div id="myJsDiv"></div>
+                </form>
+              </nav>
+              <div ace-editor [(text)]="jsValue" [mode]="'javascript'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="2000" (textChanged)="onChange($event)" class="code_box" id="javascript">
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  Output -->
+     <div class="col-md-5 nopadding">
+      <section id="output">
+        <h3>{{config.webEditor.OUTPUT}}</h3>
+        <iframe></iframe>
+      </section>
+    </div>
+  </div>
+<!--   <br>
+</div> -->

@@ -1,0 +1,120 @@
+<!-- app-navbar selector-->
+<app-navbar></app-navbar>
+<div class="container marg">
+  <div class="row justify-content-center">
+    <!-- Headding of the page-->
+    <h2 class="title">{{config.con.TITLE}}</h2>
+  </div>
+  <div class="row text-center form-group">
+    <div class="col-sm-6">
+      <!-- Dropdown for Language-->
+      <select class="form-control" [(ngModel)]="selectedValue" (click)="mode()">
+        <option class="selectlang" disabled>{{config.con.SELECTLANG}}</option>
+        <option *ngFor="let lng of languages">{{lng}}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+          <!-- Button to add snippet (open a modal to add new snippet)-->
+      <button type="button" class="btn btn-info form-control Add" (click)="openModalAdd(addtemplate)">{{config.con.ADD}}</button>
+    </div>
+  </div>
+  <!-- snippets display on screen -->
+  <div class="row">
+    <div class="col-md-4 mt-2" *ngFor="let data of snippets">
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{data.language}}</h5>
+            <small><button type="button" class="mt-1" (click)="openModal(template, data)"><i class="fa fa-pencil-square fa-2x" title="Edit/View" aria-hidden="true"></i></button> <button type="button" class="mt-1" (click)="deleteSnip(data.title)"><i class="fa fa-trash-o fa-2x" title="Delete"></i></button></small>
+          </div>
+          <p class="mb-1">{{data.title}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+<!-- template for modal to view and edit the existing template -->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left view">{{config.con.VIEWEDIT}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" role="form">
+      <div class="row form-group">
+        <label class="col-sm-2 control-label mt-2 font-weight-bold lang">{{config.con.LANGUAGE}}</label>
+        <div class="col-sm-10">
+        <!-- dropdown to select language -->
+          <select class="form-control" name="language" [(ngModel)]="language">
+            <option *ngFor="let lng of languages1">{{lng}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row form-group">
+        <label class="col-sm-2 control-label mt-2 font-weight-bold">{{config.con.ADDSNIPP}}:</label>
+        <div class="col-sm-10">
+          <input name="title" class="form-control" [(ngModel)]="title" placeholder={{title}} />
+        </div>
+      </div>
+      <div class="row form-group">
+        <label class="col-sm-2 control-label mt-2 font-weight-bold code">{{config.con.CODE}}:</label>
+        <div class="col-sm-10">
+          <textarea name="code" class="form-control" [(ngModel)]="code" placeholder={{code}} rows="5"></textarea>
+        </div>
+      </div>
+      <!-- Buttons to save and cancel -->
+      <div class="row justify-content-center">
+        <div class="col-sm-3">
+          <button class="btn btn-primary form-control save" (click)="edit()">{{config.con.SAVE}}</button>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-danger form-control cancel" (click)="modalRef.hide()">{{config.con.CANCEL}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<!-- modal to add a new snippet -->
+<ng-template #addtemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{config.con.ADD}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form-horizontal" role="form">
+      <div class="row form-group">
+        <div class="col-sm-12">
+        <!-- dropdown to select language -->
+          <select class="form-control" name="language" [(ngModel)]="language">
+            <option disabled>{{config.con.SELECTLANG}}</option>
+            <option *ngFor="let lng of languages1">{{lng}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-12">
+          <input name="title" class="form-control" [(ngModel)]="title" placeholder={{config.con.ADDSNIPP}} />
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-sm-12">
+          <textarea name="code" class="form-control" [(ngModel)]="code" placeholder={{config.con.CODE}} rows="5"></textarea>
+        </div>
+      </div>
+      <!-- Buttons to save and cancel -->
+      <div class="row justify-content-center">
+        <div class="col-sm-3">
+          <button class="btn btn-primary form-control" (click)="add()">{{config.con.SAVE}}</button>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-danger form-control" (click)="modalRef.hide()">{{config.con.CANCEL}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -1,0 +1,25 @@
+
+<!-- first column -->
+<div class="row mt-3 background">
+ <div class="col-md-12">
+ <!-- card to make block for repo sidebar -->
+   <div class="card">
+   <h5 class="card-header"><b>Repository</b><button type="button" class="btn btn-outline-info addRepo" data-toggle="popover" title="Add New Repository"><i class="fa fa-plus plusSize" aria-hidden="true"></i></button></h5>
+     <div class="card-block">
+       <div class="list-group">
+         <select name="carlist" form="carform" [(ngModel)]="selectedValue" (change)="reposearch()">
+           <option *ngFor="let repo of githubUser">{{repo.name}}</option>
+         </select>
+         <!-- making drop down containing the list of repositeries -->
+         <a *ngFor="let repo of data" type="button" class="list-group-item list-group-item-action" (click)="showFile(selectedValue, repo.name)">
+           <h6 class="list-group-item-heading">{{repo.name}}</h6>
+         </a>
+         <!-- end of drop down -->
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- card end -->
+</div>
+
+

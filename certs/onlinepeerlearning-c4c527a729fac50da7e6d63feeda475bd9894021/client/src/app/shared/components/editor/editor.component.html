@@ -1,0 +1,83 @@
+<section id="code_editors">
+  <a href="javascript:void(0);" (click)="downloadJsFile()">{{config.editor.JAVASCRIPTNAME}}
+              <i class="fa fa-download" aria-hidden="true" data-toggle="popover" title="Download JS File"></i>  </a>
+  <div id="jsDiv"></div>
+
+  <!--button to execute the code -->
+  <button class="btn-primary" (click)="executecode()">{{config.editor.EXECUTEBTN}}</button>
+  
+
+  <!-- button to create the file-->
+  <button class="btn-success" type="button" (click)="openModal(createfile)">
+    {{config.editor.CREATEBTN}}
+  </button>
+
+   <!-- button to update the file-->
+  <button class="btn-success" type="button" (click)="openModal(updatefile)">
+    {{config.editor.UPDATEBTN}}
+  </button>
+
+  <!-- button to delete the file-->
+  <button class="btn-success" type="button" (click)="openModal(deletefile)">
+    {{config.editor.DELETEBTN}}
+  </button>
+  
+  
+  <!-- create file modal window when create button is clicked-->
+  <template #createfile>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left rName">{{config.editor.REPONAME}} <b>{{reponame}}</b></h5>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h6>{{config.editor.FILENAME}}</h6>
+    <input type="text" name="" #box (keyup)="onKey($event)">
+    <h6>{{config.editor.COMMIT}}</h6>
+    <input type="text" name="" #boxes (keyup)="onKey($event)">
+    <input type="button" class="btn btn-sm btn-success submit" name="" value="submit" (click)="save(box.value,boxes.value)">
+  </template>
+  
+  
+  <!-- update file modal window when update button is clicked -->
+  <template #updatefile>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left rName">{{config.editor.REPONAME}} <b>{{reponame}}</b></h5>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h6>{{config.editor.COMMIT}}</h6>
+    <input type="text" name="" #box (keyup)="onKey($event)">
+    <h6>{{config.editor.UPDATE}} {{filenamed}}?</h6> 
+    <input type="button" class="btn btn-sm btn-success submit" name="" value="yes" (click)="update(box.value)">
+  </template>
+
+
+  <!-- delete file modal window when delete button is clicked -->
+  <template #deletefile>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left rName">{{config.editor.REPONAME}}<b>{{reponame}}</b></h5>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <h6>{{config.editor.COMMIT}}</h6>
+    <input type="text" name="" #box (keyup)="onKey($event)">
+    <h6>{{config.editor.DELETE}} {{filenamed}}?</h6> 
+    <input type="button" class="btn btn-sm btn-success submit" name="" value="yes" (click)="delete(box.value)">
+  </template>
+
+  
+  <!-- Ace Editor -->
+  <div ace-editor [(text)]="content" [mode]="'javascript'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="2000" class="code_box" id="javascript">
+  </div>
+  
+</section>
+
+<!-- Output section -->
+<div class="row">
+  <div class="col-md-12">Output:
+    <div class="output">{{dataObj}}</div>
+  </div>
+</div>

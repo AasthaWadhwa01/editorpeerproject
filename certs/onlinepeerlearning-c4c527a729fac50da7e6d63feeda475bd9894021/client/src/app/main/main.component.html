@@ -1,0 +1,50 @@
+<div class="container-fluid">
+ <div class="row">
+   <div class="col-md-12">
+     <app-navbar></app-navbar>
+   </div>
+ </div>
+ <div class="row mt-5 py-3">
+   <div class="col-md-12">
+     <div class="row ">
+       <div class="col-md-2 backgroundcolor">
+         <!-- first column -->
+         <div class="row mt-3 ">
+           <div class="col-md-12 ">
+             <!-- card to make block for repo sidebar -->
+             <div class="card">
+               <h5 class="card-header"><b>Choose Editor Mode</b></h5>
+               <div class="card-block">
+                 <div class="list-group">
+                   <select name="carlist" form="carform" [(ngModel)]="selectedValue" (change)="changeMode()">
+                     <option value="html">Html/Css</option>
+                     <option value="javascript">Javascript</option>
+                   </select>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <!-- card end -->
+           <button type="button" class="btn btn-outline-info btn-sm tokenButtonMargin"><b class='generateTokenButton'>Generate Token</b></button>
+         </div>
+         <app-repo-sidebar (content)=getcontent($event)></app-repo-sidebar>
+       </div>
+       <div *ngIf="mode=='javascript'" class="col-md-10">
+         <app-editor [content]="content"></app-editor>
+       </div>
+       <div *ngIf="mode=='html'" class="col-md-10">
+         <app-webeditor [content]="content"></app-webeditor>
+       </div>
+     </div>
+   </div>
+ </div>
+ <div class="row">
+   <div class="col-md-12">
+     <app-footer></app-footer>
+   </div>
+ </div>
+ <div class="row">
+   <div class="col-md-12">
+     <app-chat-home></app-chat-home>
+   </div>
+ </div>

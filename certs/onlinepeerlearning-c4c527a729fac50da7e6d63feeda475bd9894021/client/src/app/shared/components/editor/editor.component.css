@@ -1,0 +1,73 @@
+.CodeMirror-lines {
+  all: revert;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#wrap {
+  margin-top: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* reponame text color*/
+.rName b{
+  color: #A9A9A9;
+}
+
+/* Code Editors */
+
+#code_editors {
+  height: 500%;
+  margin-top: 0%;
+  width: 100%;
+}
+
+
+#output h3 {
+  font-size: 13px;
+  height: 30px;
+  padding: 5px 10px;
+  margin: 0;
+  background: linear-gradient(#707070, #555);
+  color: white;
+  border-top: 1px solid #8F8F8F;
+  border-bottom: 1px solid #202020;
+}
+
+
+
+/* Output Area */
+
+#output {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 5px solid #444;
+  border-left-width: 10px;
+  overflow: hidden;
+  height: 300px;
+  background-color: white;
+  color: red;
+  font-size: 18px;
+}
+
+#javascript {
+  height: 470px;
+  font-size: 18px;
+}
+
+.code_box{
+  margin-top:2px;
+}

@@ -1,0 +1,205 @@
+/*css on main component*/
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.backgroundcolor{
+  margin-top: -15px;
+}
+
+.main{
+  font-size: 10px;
+}
+
+.formText{
+  cursor: pointer;
+}
+
+.formText{
+    font-family:  'Open Sans', sans-serif; 
+  font-size: 12px;
+}
+
+.accordionBody{
+  background-color: #EBEBFC;
+}
+
+#accordion{
+  margin-top: 10px;
+}
+
+.accordionHeading{
+     font-family:  'Open Sans', sans-serif;
+  font-size: 12px;
+}
+
+.accordianClass{
+  background-color: #C5CAE9;
+}
+
+.accordionTitle{
+  color: black;
+}
+
+.descriptionTextArea{
+  height: 100px;
+}
+
+select {
+  width: 100%;
+  text-align:center;
+  background-color: #C5CAE9;
+  color: black;
+  font-family:  'Open Sans', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+option{
+  color: black;
+  background-color: #D1C4E9;
+  cursor: pointer;
+}
+select .lt { text-align:center; }
+select { text-indent: 5px; }
+.generateTokenButton {
+  color: black;
+}
+
+.tokenButtonMargin {
+  margin-top: 10px;
+  margin-left: 70px;
+}
+
+h5 {
+  font-size: 11px;
+  color: white;
+}
+
+.card-header {
+  height: 80%;
+}
+
+
+/*media queries*/
+
+@media (max-width: 320px) {
+  .tokenButtonMargin {
+    margin-left: 100px;
+  }
+  #accordion{
+    margin-bottom: 10px;
+  }
+  .bg{
+    margin-top: -5px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+  .tokenButtonMargin {
+    margin-left: 130px;
+  }
+    #accordion{
+    margin-bottom: 10px;
+  }
+    .bg{
+    margin-top: -5px;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+  .tokenButtonMargin {
+    margin-left: 160px;
+  }
+    #accordion{
+    margin-bottom: 10px;
+  }
+    .bg{
+    margin-top: -5px;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .tokenButtonMargin {
+    margin-left: 2.5px;
+  }
+
+  .card-header {
+    height: 80%;
+  }
+
+  h5 {
+    font-size: 10px;
+  }
+
+  .accordionHeading{
+     font-family:  'Open Sans', sans-serif;
+  font-size: 8px;
+}
+
+.listOption{
+  font-size: 7px;
+}
+
+.formText, input, textarea { 
+  font-size: 8px;
+}
+.pt-3, .py-3 {
+    padding-top: 0.5rem!important;
+}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tokenButtonMargin {
+    margin-left: 25px;
+    margin-top: 20px;
+  }
+
+  .card-header {
+    height: 80%;
+  }
+
+  h5 {
+    font-size: 10px;
+  }
+}
+
+.bg{
+  background-color: #2196F3;
+}
+
+.rowHeight{
+  margin-top: 5px;
+}
+
+.yourRepo {
+    color: black;
+}
+/* 
+.yourRepo:hover 
+{
+     color:black; 
+     text-decoration:none; 
+     cursor:pointer;  
+} */
+
+
+/* #sidebar{
+   background-color: IndianRed;
+   width:200px;
+   float: left;
+   position: absolute;
+   top:100px;
+   bottom: 38px;
+   overflow-y: hidden;
+}
+
+#dragbar{
+   background-color:black;
+   height:100%;
+   float: right;
+   width: 3px;
+   cursor: col-resize;
+} */

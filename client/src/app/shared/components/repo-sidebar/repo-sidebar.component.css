@@ -1,0 +1,158 @@
+/*css on repo side bar*/
+select {
+  width: 100%;
+  text-align: center;
+  background-color: #C5CAE9;
+  color: black;
+  font-family:  'Open Sans', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.gitRepo {
+  width: 100%;
+  color: black;
+  font-family:  'Open Sans', sans-serif;
+}
+
+option {
+  color: black;
+  background-color: #D1C4E9;
+  cursor: pointer;
+}
+
+select .lt {
+  text-align: center;
+}
+
+select {
+  text-indent: 5px;
+}
+
+.buttons {
+  float: right;
+  width: 20%;
+}
+
+h5 {
+  font-size: 11px;
+  color: white;
+}
+
+/*media queries*/
+@media (max-width: 320px) {
+  .addRepo {
+    margin-left: 110px;
+  }
+}
+
+@media (width: 375px) {
+  .addRepo {
+    margin-left: 140px;
+  }
+}
+
+@media (width: 425px) {
+  .addRepo {
+    margin-left: 170px;
+  }
+}
+
+@media (width: 768px) {
+  .card-header {
+    height: 100%;
+    text-align: center;
+  }
+
+  h5 {
+    font-size: 10px;
+  }
+
+  .addRepo {
+    margin-top: 50px;
+    height: 30%;
+    margin-left: -50px;
+  }
+
+  .plusSize {
+    margin-bottom: 25px;
+  }
+
+  .listOption{
+    font-size: 7px;
+    }
+}
+
+@media (width: 1024px) {
+
+  .card-header {
+    height: 100%;
+    text-align: center;
+  }
+
+  h5 {
+    font-size: 12px;
+  }
+
+  .addRepo {
+    margin-top: 75px;
+    height: 30%;
+    margin-left: -50px;
+  }
+
+  .plusSize {
+    margin-bottom: 40px;
+  }
+}
+
+@media (width: 1440px) {
+
+  .card-header {
+    height: 100%;
+    text-align: center;
+  }
+
+  h5 {
+    font-size: 12px;
+  }
+
+  .addRepo {
+    margin-top: 75px;
+    height: 30%;
+    margin-left: -50px;
+  }
+
+  .plusSize {
+    margin-bottom: 40px;
+  }
+
+  .card {
+    height: 80%;
+  }
+}
+
+.scrollable{
+  width: 100%;
+  height: 400px;
+  overflow: auto;
+}
+
+.tree-view{
+  font-size: .8rem;
+}
+.tree-view ol{
+  margin-bottom: 0px;
+  padding-left: 0px;
+}
+
+.tree-view li {
+  margin-left: 12px;
+}
+
+ol{
+  cursor: pointer;
+}
+
+li{
+  cursor: pointer;
+}

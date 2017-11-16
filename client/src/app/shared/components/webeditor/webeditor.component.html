@@ -1,0 +1,443 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<!-- <div class="container"> -->
+<div class="row ">
+  <div class="col-md-7 padding">
+    <div class="navbar toolbarColor">
+      <!-- pills to select language -->
+      <ul class="nav nav-pills marg " id="pills-tab" role="tablist">
+        <li class="nav-item ">
+          <a class="nav-link active  " id="pills-home-tab" data-toggle="pill" href="#pills-html" role="tab" aria-controls="pills-home" aria-selected="true" title={{config.webEditor.HTML}}><i class="fa fa-html5" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-css" role="tab" aria-controls="pills-profile" aria-selected="false" title={{config.webEditor.CSS}}><i class=" fa fa-css3" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-javascript" role="tab" aria-controls="pills-contact" aria-selected="false" title={{config.webEditor.JS}}><i class="fa fa-file-code-o" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+      <button id="togetherjs-share-button start-togetherjs" type="button" class="togetherjs-button btn btn-warning text-right" onclick="TogetherJS(this); return false" data-end-togetherjs-html="End TogetherJS" title="{{config.webEditor.SCREENSHARE}}" (click)="openModals(template)"> <i class="fa fa-desktop" aria-hidden="true"></i></button>
+    </div>
+    <div id="togetherjs-dock-participants"></div>
+    <template #template>
+      <div *ngIf="showModalBox==true">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">URL</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Copy this URL and send to your friend
+          <div *ngIf="link!==''">
+            <p><a target="_blank" [attr.href]="link" (click)="redirect()">{{link}}</a></p>
+          </div>
+        </div>
+      </div>
+    </template>
+    <div class="tab-content tabHeight" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-html" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div id="wrap">
+          <section id="code_editors">
+            <nav class="navbar navbar-light bg-dark">
+              <form class="form-inline">
+                <!-- Buttons to download and add HTML code -->
+                <div class="dropdown">
+                  <button class="btn btn-outline-warning" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title={{config.webEditor.ADD}}><i class="fa fa-code" aria-hidden="true"></i></button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="javascript:void(0);" *ngFor="let data of html" (click)="insertAtHtmlPos(data.code)">{{data.title}}</a>
+                  </div>
+                </div>
+                &nbsp;
+                <button href="javascript:void(0);" class="btn btn-outline-warning align-middle btn-warning" type="button" (click)="downloadHtmlFile()" data-toggle="tooltip" data-placement="Top" title="{{config.webEditor.DOWNLOADHTML}}"><i class="fa fa-download" aria-hidden="true"></i></button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-warning" href="javascript:void(0);" (click)="downloadZip()" data-toggle="tooltip" data-placement="top" title="{{config.webEditor.ZIP}}"><i class="fa fa-file-archive-o" aria-hidden="true"></i></button>
+                &nbsp;
+                <!--  button to create the file -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.CREATEFILE}} data-toggle="modal" data-target="#HTMLCeateModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                <!-- modal window to create the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="HTMLCeateModalWindow" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.CREATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" #createClose aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #createForm="ngForm" (ngSubmit)="createFileHtml(createForm.form,createForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="fileName" ngModel #htmlCreateField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder={{config.webEditor.ENTERFILENAME}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="htmlCreateField.touched && htmlCreateField.errors">
+                            <div class="alert alert-danger" *ngIf="htmlCreateField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="htmlCreateField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <textarea type="text" class="form-control textAreaWidth" name="createMsg" ngModel #htmlCommitField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="htmlCommitField.touched && htmlCommitField.errors">
+                            <div class="alert alert-danger" *ngIf="htmlCommitField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="htmlCommitField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.CREATE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning createbtn" [disabled]="!createForm.valid">{{editorConfig.editor.CREATEBTN}}</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--  button to update the file -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.UPDATEFILE}} data-toggle="modal" data-target="#updatedModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <!-- modal window to update the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="updatedModalWindow" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.UPDATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" #updateClose aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #updateForm="ngForm" (ngSubmit)="updateHtmlFile(updateForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="updateMsg" ngModel #htmlUpdateField="ngModel" required minlength="5" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="htmlUpdateField.touched && htmlUpdateField.errors">
+                            <div class="alert alert-danger" *ngIf="htmlUpdateField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="htmlUpdateField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.UPDATE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning updatebtn" [disabled]="!updateForm.valid">{{editorConfig.editor.UPDATEBTN}}</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--  button to delete the file -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.DELETEFILE}} data-toggle="modal" data-target="#deleteModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <!-- modal window to delete the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="deleteModalWindow" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.DELETINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #deleteClose>
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #deleteForm="ngForm" (ngSubmit)="deleteHtmlFile(deleteForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="deleteMsg" ngModel #htmlDeleteField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="htmlDeleteField.touched && htmlDeleteField.errors">
+                            <div class="alert alert-danger" *ngIf="htmlDeleteField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="htmlDeleteField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.DELETE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning deletebtn" [disabled]="!deleteForm.valid">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="myDiv"></div>
+              </form>
+            </nav>
+            <div id="myHtmlDiv"></div>
+            <ace-editor [(text)]="htmlValue" #htmleditor [mode]="'html'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" (textChanged)="onChange($event)" class="code_box" id="html"></ace-editor>
+          </section>
+        </div>
+      </div>
+      <!-- Css editor section -->
+      <!-- Buttons to download and add CSS code -->
+      <div class="tab-pane fade" id="pills-css" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div id="wrap">
+          <section id="code_editors">
+            <nav class="navbar navbar-light bg-dark">
+              <form class="form-inline">
+                <button class="btn btn-outline-warning" type="button" id="dropdownMenuButon1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title={{config.webEditor.ADD}}><i class="fa fa-code" aria-hidden="true"></i> </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <a class="dropdown-item" *ngFor="let data of css" (click)="insertAtCssPos(data.code)">{{data.title}}</a>
+                </div>
+                &nbsp;
+                <button href="javascript:void(0);" class="btn btn-outline-warning align-middle btn-outlin-secondary" type="button" href="javascript:void(0);" (click)="downloadCssFile()" data-toggle="tooltip" data-placement="top" title={{config.webEditor.DOWNLOADCSS}}><i class="fa fa-download" aria-hidden="true"></i></button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-warning" href="javascript:void(0);" (click)="downloadZip()" data-toggle="tooltip" data-placement="top" title="{{config.webEditor.ZIP}}"><i class="fa fa-file-archive-o" aria-hidden="true"></i></button>
+                <!--  butons to create file on github -->
+                <button class="btn btn-outline-warning align-middle" href="javascript:void(0);" title={{config.webEditor.CREATEFILE}} data-toggle="modal" data-target="#cssCreateModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                <!-- modal window to create the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="cssCreateModalWindow" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.CREATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" #cssCreateClose aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #cssCreateForm="ngForm" (ngSubmit)="createFileCss(cssCreateForm.form,cssCreateForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="fileName" ngModel #cssCreateField="ngModel" required minlength="5" placeholder={{config.webEditor.ENTERFILENAME}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="cssCreateField.touched && cssCreateField.errors">
+                            <div class="alert alert-danger" *ngIf="cssCreateField.errors.required">
+                              {{config.webEditor.FILENAMEREQ}}
+                            </div>
+                            <div class="alert alert-danger" *ngIf="cssCreateField.errors.minlength">
+                              {{config.webEditor.MINLENGTH}}
+                            </div>
+                          </div>
+                          <textarea type="text" class="form-control textAreaWidth" name="createMsg" ngModel #cssCommitField="ngModel" required minlength="5" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="cssCommitField.touched && cssCommitField.errors">
+                            <div class="alert alert-danger" *ngIf="cssCommitField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="cssCommitField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.CREATE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning createbtn" [disabled]="!cssCreateForm.valid">{{editorConfig.editor.CREATEBTN}}</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- button to update the file -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.UPDATEFILE}} data-toggle="modal" data-target="#cssUpdatedModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <!--  modal window to update the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="cssUpdatedModalWindow" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.UPDATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" #cssUpdateClose aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #cssUpdateForm="ngForm" (ngSubmit)="updateCssFile(cssUpdateForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="updateMsg" ngModel #cssUpdateField="ngModel" required minlength="5" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="cssUpdateField.touched && cssUpdateField.errors">
+                            <div class="alert alert-danger" *ngIf="cssUpdateField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="cssUpdateField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.UPDATE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning updatebtn" [disabled]="!cssUpdateForm.valid">{{editorConfig.editor.UPDATEBTN}}</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- button to delete the file -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.DELETEFILE}} data-toggle="modal" data-target="#cssDeleteModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <!--modal window to delete the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="cssDeleteModalWindow" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.DELETINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #cssDeleteClose>
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #cssDeleteForm="ngForm" (ngSubmit)="deleteCssFile(cssDeleteForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="deleteMsg" ngModel #cssDeleteField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="cssDeleteField.touched && cssDeleteField.errors">
+                            <div class="alert alert-danger" *ngIf="cssDeleteField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="cssDeleteField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.DELETE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning deletebtn" [disabled]="!cssDeleteForm.valid">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="myCssDiv"></div>
+              </form>
+            </nav>
+            <ace-editor [(text)]="cssValue" #csseditor [mode]="'css'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" (textChanged)="onChange($event)" class="code_box" id="css"></ace-editor>
+          </section>
+        </div>
+      </div>
+      <!-- Buttons to download and add JS code -->
+      <div class="tab-pane fade" id="pills-javascript" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div id="wrap">
+          <section id="code_editors">
+            <nav class="navbar navbar-light bg-dark">
+              <form class="form-inline">
+                <button class="btn btn-outline-warning" type="button" id="dropdownMenuButon1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title={{config.webEditor.ADD}}><i class="fa fa-code" aria-hidden="true"></i> </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <a class="dropdown-item" *ngFor="let data of css" (click)="insertAtCssPos(data.code)">{{data.title}}</a>
+                </div>
+                &nbsp;
+                <button href="javascript:void(0);" class="btn btn-outline-warning align-middle btn-outlin-secondary" type="button" href="javascript:void(0);" (click)="downloadJsFile()" data-toggle="tooltip" data-placement="top" title={{config.webEditor.DOWNLOADJS}}><i class="fa fa-download" aria-hidden="true"></i></button>
+                &nbsp;
+                <button type="button" class="btn btn-outline-warning " href="javascript:void(0);" (click)="downloadZip()" data-toggle="tooltip" data-placement="top" title="{{config.webEditor.ZIP}}"><i class="fa fa-file-archive-o" aria-hidden="true"></i></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                  <a class="dropdown-item" *ngFor="let data of javascript" (click)="insertAtJavascriptPos(data.code)">{{data.title}}</a>
+                </div>
+                &nbsp;
+                <!--  butons to create file on github -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.CREATEFILE}} data-toggle="modal" data-target="#jsCreateModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+                <!-- modal window to create the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="jsCreateModalWindow" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.CREATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" #jsCreateClose aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #jsCreateForm="ngForm" (ngSubmit)="createFileJS(jsCreateForm.form,jsCreateForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="fileName" ngModel #jsCreateField="ngModel" required minlength="5" placeholder={{config.webEditor.ENTERFILENAME}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="jsCreateField.touched && jsCreateField.errors">
+                            <div class="alert alert-danger" *ngIf="jsCreateField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="jsCreateField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <textarea type="text" class="form-control textAreaWidth" name="createMsg" ngModel #jsCommitField="ngModel" required minlength="5" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="jsCommitField.touched && jsCommitField.errors">
+                            <div class="alert alert-danger" *ngIf="jsCommitField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="jsCommitField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.CREATE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning createbtn" [disabled]="!jsCreateForm.valid">{{editorConfig.editor.CREATEBTN}}</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- button to update the file -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.UPDATEFILE}} data-toggle="modal" data-target="#jsUpdatedModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                <!-- modal window to update the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="jsUpdatedModalWindow" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.UPDATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" #jsUpdateClose aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #jsUpdateForm="ngForm" (ngSubmit)="updateJsFile(jsUpdateForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="updateMsg" ngModel #jsUpdateField="ngModel" required minlength="5" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="jsUpdateField.touched && jsUpdateField.errors">
+                            <div class="alert alert-danger" *ngIf="jsUpdateField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="jsUpdateField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.UPDATE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning updatebtn" [disabled]="!jsUpdateForm.valid">{{editorConfig.editor.UPDATEBTN}}</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--button to delete the file -->
+                <button class="btn btn-outline-warning" href="javascript:void(0);" title={{config.webEditor.DELETEFILE}} data-toggle="modal" data-target="#jsDeleteModalWindow" (click)="isRepoSelected()">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                <!-- modal window to delete the file -->
+                <div *ngIf="ifRepo" class="modal fade" id="jsDeleteModalWindow" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id=""><strong class="modalHeader">{{editorConfig.editor.DELETINGFILE}}</strong><b>{{reponame}}</b></h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #jsDeleteClose>
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form #jsDeleteForm="ngForm" (ngSubmit)="deleteJsFile(jsDeleteForm.form);">
+                          <textarea type="text" class="form-control textAreaWidth" name="deleteMsg" ngModel #jsDeleteField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder={{config.webEditor.ENTERCOMMIT}} title={{config.webEditor.FILENAMEREQ}}></textarea>
+                          <div *ngIf="jsDeleteField.touched && jsDeleteField.errors">
+                            <div class="alert alert-danger" *ngIf="jsDeleteField.errors.required">
+                              <h6>{{config.webEditor.FILENAMEREQ}}</h6>
+                            </div>
+                            <div class="alert alert-danger" *ngIf="jsDeleteField.errors.minlength">
+                              <h6>{{config.webEditor.MINLENGTH}}</h6>
+                            </div>
+                          </div>
+                          <div>
+                            <h6>{{editorConfig.editor.DELETE}}</h6>
+                          </div>
+                          <button class="btn btn-outline-warning deletebtn" [disabled]="!jsDeleteForm.valid">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="myJsDiv"></div>
+              </form>
+            </nav>
+            <ace-editor [(text)]="jsValue" #jseditor [mode]="'javascript'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="2000" (textChanged)="onChange($event)" class="code_box" id="javascript"></ace-editor>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  Output -->
+  <div class="col-md-5 nopadding output">
+    <section id="output">
+      <h3>{{config.webEditor.OUTPUT}}</h3>
+      <iframe></iframe>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,172 @@
+<!-- loader-->
+<ngx-loading [show]="loading"></ngx-loading>
+<!-- Ace Editor -->
+<div class="row">
+  <div class="col-md-7 padding">
+    <section>
+      <nav class="navbar navbar-light font nopadding" id="mainNav">
+        <form class="row col-md-12 col-sm-12 form-inline ">
+          &nbsp; &nbsp;
+          <div class="leftbutton">
+            <!--     button to add snippet -->
+            <button class="btn btn-outline-warning" href="javascript:void(0);" id="dropdownMenuButton" data-toggle="dropdown" title={{config.editor.SNIPPET}}>
+              <i class="fa fa-code " aria-hidden="true"></i>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item color" *ngFor="let data of javascript" (click)="insertAtPos(data.code)">{{data.title}}</a>
+              </div>
+            </button>
+            &nbsp;
+            <!--  Execute function to run code   -->
+            <button class="btn btn-outline-warning" href="javascript:void(0);" title=" Run the code" (click)="executecode()">
+              <i class=" fa fa-play-circle-o " aria-hidden="true"></i></button>
+            &nbsp;
+            <!-- Download icon -->
+            <button class="btn btn-outline-warning" href="javascript:void(0);" (click)="downloadJsFile()" title="Download JS File">
+              <i class="fa fa-download " aria-hidden="true"></i>
+            </button>
+            <!--  button to create the file -->
+            &nbsp;
+            <button class="btn btn-outline-warning" href="javascript:void(0);" title="Create new file" data-toggle="modal" data-target="#createModalWindow" (click)="isRepoSelected()"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+            <!-- modal window to create the file -->
+            <div *ngIf="ifRepo" class="modal fade" id="createModalWindow" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h6 class="modal-title" id=""><strong class="modalHeader">{{config.editor.CREATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                    <button type="button" class="close" data-dismiss="modal" #createClose aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form #createForm="ngForm" (ngSubmit)="createFile(createForm.form,createForm.form);">
+                      <textarea type="text" class="form-control textAreaWidth" name="fileName" ngModel #createField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder="enter your file name" title="empty field not allowed"></textarea>
+                      <div *ngIf="createField.touched && createField.errors">
+                        <div class="alert alert-danger" *ngIf="createField.errors.required">
+                          <h6>{{config.editor.FILENAMEREQ}}</h6>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="createField.errors.minlength">
+                          <h6>{{config.editor.MINLENGTH}}</h6>
+                        </div>
+                      </div>
+                      <textarea type="text" class="form-control textAreaWidth" name="createMsg" ngModel #commitField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder="enter your commit message" title="empty field not allowed"></textarea>
+                      <div *ngIf="commitField.touched && commitField.errors">
+                        <div class="alert alert-danger" *ngIf="commitField.errors.required">
+                          <h6>commit message is required</h6>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="commitField.errors.minlength">
+                          <h6>{{config.editor.MINLENGTH}}</h6>
+                        </div>
+                      </div>
+                      <div>
+                        <h6>{{config.editor.CREATE}}</h6>
+                      </div>
+                      <button class="btn btn-primary createbtn" [disabled]="!createForm.valid">{{config.editor.CREATEBTN}}</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--  button to update the file -->
+            &nbsp;
+            <button class="btn btn-outline-warning" href="javascript:void(0);" title="Update File" data-toggle="modal" data-target="#updatedModalWindow" (click)="isRepoSelected()">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </button>
+            <!-- modal window to update the file -->
+            <div *ngIf="ifRepo" class="modal fade" id="updatedModalWindow" tabindex="-1" role="dialog" aria-labelledby="updateModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h6 class="modal-title" id=""><strong class="modalHeader">{{config.editor.UPDATINGFILE}}</strong><b>{{reponame}}</b></h6>
+                    <button type="button" class="close" data-dismiss="modal" #updateClose aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form #updateForm="ngForm" (ngSubmit)="updateFile(updateForm.form);">
+                      <textarea type="text" class="form-control textAreaWidth" name="updateMsg" ngModel #updateField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder="enter your commit message" title="empty field not allowed"></textarea>
+                      <div *ngIf="updateField.touched && updateField.errors">
+                        <div class="alert alert-danger" *ngIf="updateField.errors.required">
+                          <h6>commit message is required</h6>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="updateField.errors.minlength">
+                          <h6>{{config.editor.MINLENGTH}}</h6>
+                        </div>
+                      </div>
+                      <div>
+                        <h6>{{config.editor.UPDATE}}</h6>
+                      </div>
+                      <button class="btn btn-primary updatebtn" [disabled]="!updateForm.valid">{{config.editor.UPDATEBTN}}</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--  button to delete the file -->
+            &nbsp;
+            <button class="btn btn-outline-warning" href="javascript:void(0);" title="Delete File" data-toggle="modal" data-target="#deleteModalWindow" (click)="isRepoSelected()">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+            <!-- modal window to delete the file -->
+            <div *ngIf="ifRepo" class="modal fade" id="deleteModalWindow" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h6 class="modal-title" id=""><strong class="modalHeader">{{config.editor.DELETINGFILE}}</strong><b>{{reponame}}</b></h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" #deleteclose>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form #deleteForm="ngForm" (ngSubmit)="deleteFile(deleteForm.form);">
+                      <textarea type="text" class="form-control textAreaWidth" name="deleteMsg" ngModel #deleteField="ngModel" required minlength="5" pattern=".*\S+.*" placeholder="enter your commit message" title="empty field not allowed"></textarea>
+                      <div *ngIf="deleteField.touched && deleteField.errors">
+                        <div class="alert alert-danger" *ngIf="deleteField.errors.required">
+                          <h6>commit message is required</h6>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="deleteField.errors.minlength">
+                          <h6>{{config.editor.MINLENGTH}}</h6>
+                        </div>
+                      </div>
+                      <div>
+                        <h6>{{config.editor.DELETE}}</h6>
+                      </div>
+                      <button class="btn btn-primary deletebtn" [disabled]="!deleteForm.valid">Delete</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- screen share button -->
+            &nbsp;
+            <button class="btn btn-outline-warning" href="javascript:void(0);" onclick="TogetherJS(this); return false;" title="Share Your Screen" (click)="openModals(templates)">
+              <i class="fa fa-desktop screen" aria-hidden="true"></i></button>
+            <template #templates>
+              <div *ngIf="showModalBox==true">
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">URL</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Copy this URL and send to your friend
+                  <div *ngIf="link!==''">
+                    <p><a target="_blank" [attr.href]="link" (click)="redirect()">{{link}}</a></p>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </form>
+      </nav>
+      <!-- Ace Editor-->
+      <ace-editor [(text)]="content" #editor [mode]="'javascript'" [theme]="'twilight'" [readOnly]="false" [autoUpdateContent]="true" [durationBeforeCallback]="2000" class="code_box" id="javascript"></ace-editor>
+    </section>
+  </div>
+  <!-- Output section -->
+  <div class="col-md-5 nopadding output">
+    <section id="output">
+      <h3>Output</h3> <pre>{{dataObj}}</pre>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+
+# dependencies
+/node_modules
+/logs
+npm-debug.log
+server/uploads
+server/services/coderunner/logs
+
+

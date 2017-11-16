@@ -1,0 +1,202 @@
+html {
+
+
+
+  position: relative;
+
+
+
+  min-height: 100%;
+
+
+
+}
+
+
+
+.backgroundcolor{
+
+  background-color: #f1f1f2;
+
+}
+
+
+
+.card{
+
+  height: 80%;
+
+  background-color: #a1d6e2;
+
+}
+
+
+
+select{
+
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+
+}
+
+
+
+.option{
+
+  background: linear-gradient(to right, #e0eafc, #cfdef3);
+
+}
+
+
+
+.generateTokenButton{
+
+  color: black;
+
+}
+
+
+
+.tokenButtonMargin{
+
+  margin-top: 10px;
+
+    margin-left: 70px;
+
+}
+
+
+
+h5{
+
+  font-size: 17px;
+
+  color: white;
+
+}
+
+
+
+.card-header{
+
+  height: 70%;
+
+  text-align: center;
+
+}
+
+
+
+/*margin of footer*/
+
+
+
+
+
+@media (max-width: 320px) {
+
+
+
+  .tokenButtonMargin{
+
+    margin-left: 100px;
+
+}
+
+
+
+}
+
+
+
+@media (width: 375px) {
+
+
+
+  .tokenButtonMargin{
+
+    margin-left: 130px;
+
+}
+
+
+
+}
+
+
+
+@media (width: 425px) {
+
+
+
+  .tokenButtonMargin{
+
+    margin-left: 160px;
+
+}
+
+
+
+}
+
+
+
+@media (width: 768px) {
+
+
+
+  .tokenButtonMargin{
+
+    margin-left: 2.5px;
+
+}
+
+
+
+.card-header{
+
+  height: 80%;
+
+}
+
+
+
+h5{
+
+  font-size: 10px;
+
+}
+
+}
+
+
+
+@media (width: 1024px) {
+
+
+
+  .tokenButtonMargin{
+
+    margin-left: 25px;
+
+    margin-top:20px;
+
+}
+
+
+
+.card-header{
+
+  height: 80%;
+
+}
+
+
+
+h5{
+
+  font-size: 10px;
+
+}
+
+}
+

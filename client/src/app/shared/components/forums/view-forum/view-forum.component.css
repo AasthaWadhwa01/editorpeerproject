@@ -1,0 +1,204 @@
+  .answeraccepted {
+    width: 79px;
+    background-color: #3F51B5;
+  }
+
+  .postans {
+    background-color: #3F51B5;
+  }
+
+  .problemDescription {
+    font-size: 15px;
+    color: #757575;
+  }
+
+  .tags {
+    background-color: #455A64;
+    font-size: 12px;
+  }
+  .postedDate{
+    color: #757575;
+  }
+
+  .postquestion {
+    background-color: #00695C;
+  }
+
+  .questionTitle {
+    color: #212121;
+  }
+
+  .user {
+    color: #616161;
+    font-size: 13px;
+  }
+
+  .views {
+    color: #6A1B9A;
+  }
+
+  .codesnippet {
+    background-color: #E0E0E0;
+    color: white;
+  }
+
+  .like{
+    background-color: #BDBDBD;
+    font-size: 12px;
+  }
+
+  .dislike {
+    background-color: #BDBDBD;
+    font-size: 12px;
+  }
+
+  .ans {
+    padding-left: 11px;
+  }
+   .answer {
+       font-size: 15px;
+    color: #757575;
+    }
+
+  .navbar {
+    background-color: #00695C;
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  hr {
+    border: 0;
+    /*clear: both;*/
+    display: block;
+    width: 99%;
+    background-color: #DBDCDD;
+    height: 1px;
+  }
+
+  .codesnippet {
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    /*width: -webkit-fill-available;*/
+  }
+  /*// Extra small devices (portrait phones, less than 576px)*/
+
+  @media (max-width: 575px) {
+
+    .text-right {
+      text-align: left;
+    }
+    .problemDescription {
+      font-size: 12px;
+    }
+    .questionTitle {
+      font-size: 13px;
+    }
+    .user {
+      font-size: 12px;
+    }
+    .answer {
+      font-size: 12px;
+    }
+    .h5 {
+      font-size: 18px;
+    }
+    .h4 {
+      font-size: 16px;
+    }
+  }
+  /*// Small devices (landscape phones, 576px and up)*/
+
+  @media (min-width: 576px) and (max-width: 767px) {}
+  /*// Medium devices (tablets, 768px and up)*/
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .postquestion {
+      float: right;
+    }
+    .user {
+      text-align: right;
+      font-size: 13px;
+    }
+    .h5 {
+      font-size: 19px;
+    }
+    .h4 {
+      font-size: 17px;
+    }
+    .answer {
+      font-size: 13px;
+    }
+    .problemDescription {
+      font-size: 13px;
+    }
+    .questionTitle {
+      font-size: 14px;
+    }
+  }
+  /*// Large devices (desktops, 992px and up)*/
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+
+    .postquestion {
+      float: right;
+    }
+    .user {
+      text-align: right;
+      font-size: 14px;
+    }
+    .answer {
+      font-size: 14px;
+    }
+
+    .h5 {
+      font-size: 20px;
+    }
+    .h4 {
+      font-size: 18px;
+    }
+
+    .problemDescription {
+      font-size: 14px;
+    }
+    .questionTitle {
+      font-size: 15px;
+    }
+  }
+  /*// Extra large devices (large desktops, 1200px and up)*/
+
+  @media (min-width: 1200px) {
+    .postquestion {
+      float: right;
+    }
+    .user {
+      text-align: right;
+    }
+    .problemDescription {
+      font-size: 14px;
+    }
+    .questionTitle {
+      font-size: 15px;
+    }
+    .answer {
+      font-size: 15px;
+    }
+    .h5 {
+      font-size: 21px;
+    }
+    .h4 {
+      font-size: 19px;
+    }
+  }

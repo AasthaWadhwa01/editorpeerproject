@@ -1,0 +1,25 @@
+
+
+.footer1 .footer-bottom {
+   background-color: #1995ad
+;
+   padding: 20px 0;
+   color: #DDD;
+   font-size: 13px;
+}
+
+.copyright{
+   text-align: center;
+}
+
+@media (max-width: 550px) {
+  .footer1 .footer-bottom .pull-left,
+  .footer1 .footer-bottom .pull-right {
+    float: none !important;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+

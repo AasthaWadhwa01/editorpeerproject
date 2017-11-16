@@ -1,0 +1,23 @@
+<!-- repo side bar starts -->
+<!-- first column -->
+<div class="row mt-3 background">
+  <div class="col-md-12" class="scrollable">
+    <select class="btn btn-outline-warning listOption" name="carlist" form="carform" [(ngModel)]="selectedValue" (change)="getDirectoryContent()">
+      <!-- (change)="reposearch()" -->
+      <option selected>Select your repository</option>
+      <option *ngFor="let repo of githubUser">{{repo.name}}</option>
+    </select>
+    <!-- making drop down containing the list of repositeries -->
+    <!-- end of drop down -->
+    <div class="tree-view" *ngFor="let data of folderDetails; let i=index; ">
+      <ol id="dir{{i}}" *ngIf="data.type==='dir'" class="dir" style="margin-right=1px;" [attr.data-path]="data.path" (click)="getFolderInfo($event)">
+        <i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;<i class="fa fa-folder-open" aria-hidden="true"></i> &nbsp;{{data.name}}
+      </ol>
+      <li *ngIf="data.type==='file'" class="file" (click)="getFile($event)" [attr.data-path]="data.path" [attr.data-filename]="data.name" style="list-style-type:none;">
+        <!-- <i aria-hidden="true"></i>&nbsp; -->
+        <i class="fa fa-file" aria-hidden="true"></i> &nbsp;{{data.name}}
+      </li>
+    </div>
+  </div>
+  <!-- repo side bar ends -->
+</div>

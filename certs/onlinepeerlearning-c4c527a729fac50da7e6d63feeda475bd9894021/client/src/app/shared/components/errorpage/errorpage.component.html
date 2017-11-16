@@ -1,0 +1,19 @@
+<!-- body of error page starts -->
+<body>
+  <br>
+  <br>
+  <br>
+  <div class="container">
+  <!-- error message being displayed in jumbotron -->
+    <div class="jumbotron">
+      <h1><font face="Tahoma" color="red">{{config.error.ERROR}}</font></h1>
+      <br />
+      <p><b>{{config.error.ERRORMESSAGE}}</b></p>
+      <br>
+      <!-- button to take user back to home page -->
+      <button class="btn btn-secondary btn-lg btn-block" routerLink="/home"><i class="icon-home icon-white"></i> 
+      {{config.error.HOMEBUTTON}}</button>
+    </div>
+  </div>
+</body>
+<!-- body of error page ends -->

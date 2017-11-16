@@ -1,0 +1,155 @@
+<!-- main component starts -->
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="container-fluid backgroundcolor">
+  <div class="row rowHeight">
+    <div class="col-md-12">
+      <!-- navbar selector -->
+      <app-navbar></app-navbar>
+    </div>
+  </div>
+  <div class="row mt-5 py-3">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-2 bg">
+          <div id="accordion" role="tablist">
+            <div class="card">
+              <div class="card-header accordianClass" role="tab" id="headingOne">
+                <h5 class="mb-0 accordionHeading">
+                  <a class= "accordionTitle" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{config.TITLE}}
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body accordionBody">
+                  <select class="btn btn-outline-warning listOption" name="carlist" form="carform" [(ngModel)]="selectedValue" (change)="changeMode()">
+                    <option class="option1" value="html">{{config.OPTION1}}</option>
+                    <option class="option2" value="javascript">{{config.OPTION2}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header accordianClass" role="tab" id="headingThree">
+                <h5 class="mb-0 accordionHeading">
+                  <a class="collapsed accordionTitle newrepo" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    {{config.NEWREPOSITORY}}
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body accordionBody">
+                  <form #repositoryForm="ngForm" (ngSubmit)="createNewRepo(repositoryForm.form);">
+                    <label for="recipient-name" class="form-control-label formText reponame">{{config.REPOSITORYNAME}}</label>
+                    <input type="text" class="form-control" name="repositoryName" ngModel #repoCreateField="ngModel" required minlength="5" pattern=".*\S+.*" title="empty field not allowed">
+                    <div *ngIf="repoCreateField.touched && repoCreateField.errors">
+                      <div class="alert alert-danger formText" *ngIf="repoCreateField.errors.required">
+                        <h6>The repository name is required</h6>
+                      </div>
+                      <div class="alert alert-danger formText" *ngIf="repoCreateField.errors.minlength">
+                        <h6>The repository name should be at least 5 characters long</h6>
+                      </div>
+                    </div>
+                    <h6></h6>
+                    <label for="recipient-name" class="form-control-label formText description">{{ config.DESCRIPTION}}</label>
+                    <textarea type="text" id="description" class="form-control descriptionTextArea" data-spy="scroll" data-target="description" data-offset="0" name="description" ngModel #repoDescriptionField="ngModel" required minlength="5" pattern=".*\S+.*" title="empty field not allowed">
+                      <div *ngIf="repoDescriptionField.touched && repoDescriptionField.errors">
+                        <div class="alert alert-danger formText" *ngIf="repoDescriptionField.errors.required">
+                          <h6>The description is required</h6>
+                        </div>
+                        <div class="alert alert-danger formText" *ngIf="repoDescriptionField.errors.minlength">
+                          <h6>Description is needed</h6>
+                        </div>
+                      </div>
+                    </textarea>
+                    <br>
+                    <button class="btn btn-warning btn-lg btn-block formText" [disabled]="!repositoryForm.valid">Ok</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header accordianClass" role="tab" id="headingFour">
+                <h5 class="mb-0 accordionHeading">
+                  <a class="collapsed accordionTitle pac" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"title="To access or Modified repository Pesonal Access Token is needed"title="To access or Modified repository Pesonal Access Token is needed"title="To access or Modified repository Pesonal Access Token is needed"title="To access or Modified repository Pesonal Access Token is needed" title="To access or Modified repository Pesonal Access Token is needed">
+                    {{config.PACGENERATE}}
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
+                <div class="card-body accordionBody">
+                  <form #tokenForm="ngForm" (ngSubmit)="generateToken(tokenForm.form);">
+                    <label for="recipient-name" class="form-control-label formText">{{config.PASSWORD}}</label>
+                    <input type="password" class="form-control" name="pass" ngModel #tokenPasswordField="ngModel" required minlength="5" pattern=".*\S+.*" title="empty field not allowed">
+                    <div *ngIf="tokenPasswordField.touched && tokenPasswordField.errors">
+                      <div class="alert alert-danger formText" *ngIf="tokenPasswordField.errors.required">
+                        The password is required
+                      </div>
+                      <div class="alert alert-danger formText" *ngIf="tokenPasswordField.errors.minlength">
+                        The password should be at least 3 characters long
+                      </div>
+                    </div>
+                    <h6></h6>
+                    <label for="recipient-name" class="form-control-label formText">{{config.PACNAME}}</label>
+                    <input type="text" class="form-control" name="tokenName" ngModel #tokenNameField="ngModel" required minlength="5" pattern=".*\S+.*" title="empty field not allowed">
+                    <div *ngIf="tokenNameField.touched && tokenNameField.errors">
+                      <div class="alert alert-danger formText" *ngIf="tokenNameField.errors.required">
+                        The token name is required
+                      </div>
+                      <div class="alert alert-danger formText" *ngIf="tokenNameField.errors.minlength">
+                        The token name should be at least 5 characters long
+                      </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-warning btn-lg btn-block formText" [disabled]="!tokenForm.valid">Ok</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header accordianClass" role="tab" id="headingTwo">
+                <h5 class="mb-0 accordionHeading">
+                  <a class="collapsed yourRepo" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Your Repositories
+                  </a>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body accordionBody">
+                  <app-repo-sidebar [githubUser]="githubUser" [mode]="mode" (editorMode)=getMode($event) (content)=getcontent($event) (fileName)=getfilename($event) (repoName)=getreponame($event) [repoNameForFileListUpdate]="repoNameForUpdate" (fileExtension)=getFileExtension($event)></app-repo-sidebar>
+                </div>
+              </div>
+            </div>
+            <!-- first column -->
+            <!-- repository side bar selector -->
+          </div>
+        </div>
+        <!-- side bar div end here -->
+        <!-- editor div start here -->
+        <div *ngIf="mode=='javascript'" class="col-md-10">
+          <app-editor [content]="content" [reponame]="reponame" [filenamed]="filenamed" (repoNameForFileUpdateAtCreate)="getRepoNameForFileUpdate($event)" (repoNameForFileUpdateAtUpdate)="getRepoNameForFileUpdate($event)" (repoNameForFileUpdateAtDelete)="getRepoNameForFileUpdate($event)"></app-editor>
+        </div>
+        <!-- editor  div end here -->
+        <div *ngIf="mode=='html'" class="col-md-10">
+          <app-webeditor [extension]="extension" [content]="content" [reponame]="reponame" [filenamed]="filenamed" (repoNameForFileUpdateAtCreate)="getRepoNameForFileUpdate($event)" (repoNameForFileUpdateAtUpdate)="getRepoNameForFileUpdate($event)" (repoNameForFileUpdateAtDelete)="getRepoNameForFileUpdate($event)"></app-webeditor>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 backgroundcolor">
+      <!-- chat component selector -->
+      <app-chat-home></app-chat-home>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- footer selector -->
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+<!-- main component ends -->
+<!-- <div id="sidebar">
+          <div id="dragbar"></div> -->
+<!-- </div> -->
